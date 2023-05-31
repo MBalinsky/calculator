@@ -1,14 +1,10 @@
 const calc = document.querySelector('.calc');
-const calcScreen = document.querySelector('.calc-screen p')
+const calcScreen = document.querySelector('.calc-screen p');
 
 calc.addEventListener('click', (e) => {
     if (!e.target.classList.contains('btn')) return;
     if (calcScreen.innerText === '0') {
         calcScreen.innerText = '';
-    }
-    if (calcScreen.innerText.length > 7) {
-        alert('Сорян,но поле не резиновое,уже очищаю...');
-        calcScreen.innerText = '0';
     }
     const value = e.target.innerText;
 
@@ -21,11 +17,16 @@ calc.addEventListener('click', (e) => {
             calcScreen.innerText = eval(calcScreen.innerText).toFixed(0);
             break;
 
+        case 'X':
+            calcScreen.innerText = calcScreen.innerText += '*';
+            break;
+
         default:
-            calcScreen.innerText += value
+            calcScreen.innerText += value;
     }
+    if (calcScreen.innerText.length > 7) {
+        alert('Сорян,но поле не резиновое,уже очищаю...');
+        calcScreen.innerText = '0';
+    }
+});
 
-
-
-
-})
